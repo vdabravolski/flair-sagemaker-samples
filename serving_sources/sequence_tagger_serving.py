@@ -41,8 +41,12 @@ def input_fn(request_body, request_content_type):
     
     if request_content_type.lower()=="application/json":
         inference_text = json.loads(request_body)
+    
+    elif request_content_type.lower()=="text/csv":
+        inference_text=request_body
+    
     else:
-        raise ValueError(f"Format {request_content_type} is not supported. Please use \"application/json\" instead.")
+        raise ValueError(f"Format {request_content_type} is not supported. Please use \"application/json\" or \"text/csv\" instead.")
     
     try:
         input_object = Sentence(inference_text)
@@ -87,16 +91,17 @@ def output_fn(prediction, response_content_type):
     """
     
     if response_content_type.lower()=="pickle":
-        
         try:
-            pickled_output = pickle.dumps(prediction)
+            output = pickle.dumps(prediction)
         except Exception as e:
             logger.error("Pickling of FLAIR sentence object failed.")
             logger.error(e)
-            
+    
+    elif response_content_type.lower()=="text/csv":
+        output = str(prediction)            
     else:
-        raise ValueError(f"Format {request_content_type} is not supported. Please use \"application/json\" instead.")
+        raise ValueError(f"Format {request_content_type} is not supported. Please use \"pickle\" or \"text\csv\" instead.")
     
     logger.debug("Output serialization sucessfully completed. ")
     
-    return pickled_output
+    return output
