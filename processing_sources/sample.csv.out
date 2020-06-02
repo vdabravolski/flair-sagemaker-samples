@@ -1,0 +1,9 @@
+[Sentence: "New York City (NYC), often called The City or simply New York (NY), is the most populous city in the United States.
+"   [− Tokens: 22  − Token-Labels: "New <B-LOC> York <I-LOC> City <E-LOC> (NYC), often called The <B-LOC> City <E-LOC> or simply New <B-LOC> York <E-LOC> (NY), is the most populous city in the United <B-LOC> States.
+ <E-LOC>"]]
+[Sentence: "Paris is the capital and most populous city of France, with a population of 2,148,271 residents (official estimate, 1 January 2020) in an area of 105 square kilometres (41 square miles).
+"   [− Tokens: 31  − Token-Labels: "Paris <S-LOC> is the capital and most populous city of France, <S-LOC> with a population of 2,148,271 residents (official estimate, 1 January 2020) in an area of 105 square kilometres (41 square miles).
+"]]
+[Sentence: "Berlin is the capital and largest city of Germany by both area and population.
+"   [− Tokens: 14  − Token-Labels: "Berlin <S-LOC> is the capital and largest city of Germany <S-LOC> by both area and population.
+"]]

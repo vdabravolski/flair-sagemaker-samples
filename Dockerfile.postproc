@@ -1,0 +1,13 @@
+FROM python:3.7-slim-buster
+
+########### Installing packages ##########
+RUN pip3 install pandas==0.25.3 scikit-learn==0.21.3
+ENV PYTHONUNBUFFERED=TRUE
+
+########### Configure processing scripts ##########
+ARG code_dir=/opt/ml/code
+RUN mkdir -p $code_dir
+COPY processing_sources $code_dir
+WORKDIR $code_dir
+
+ENTRYPOINT ["python3","processing.py"]
